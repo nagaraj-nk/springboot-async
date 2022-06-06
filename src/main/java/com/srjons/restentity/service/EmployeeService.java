@@ -21,15 +21,12 @@ public class EmployeeService {
   @Autowired private AsyncService asyncService;
 
   public void addEmp(int count) {
-    long start = System.currentTimeMillis();
     IntStream.range(1, count + 1)
         .forEach(
             value -> {
               Employee employee = new Employee();
               employee.setEmployeeName(UUID.randomUUID().toString());
               asyncService.addEmp(employee);
-              long end = System.currentTimeMillis();
-              System.out.println("time taken: " + ((end - start) / 1000.0));
             });
   }
 
@@ -87,5 +84,15 @@ public class EmployeeService {
       e.printStackTrace();
     }
     return isDeleted;
+  }
+
+  public void addEmp2(int count) {
+    IntStream.range(1, count + 1)
+        .forEach(
+            value -> {
+              Employee employee = new Employee();
+              employee.setEmployeeName(UUID.randomUUID().toString());
+              asyncService.addEmp2(employee);
+            });
   }
 }

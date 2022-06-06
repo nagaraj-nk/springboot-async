@@ -39,6 +39,13 @@ public class EmployeeController {
     return "Request submitted";
   }
 
+  @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/asyncLoad2/{count}")
+  public String loadEmployeeList2(@PathVariable("count") int count) {
+    employeeService.addEmp2(count);
+    return "Request submitted";
+  }
+
+
   @DeleteMapping("/{employeeId}")
   public ResponseEntity<String> deleteEmployeeById(@PathVariable("employeeId") int employeeId) {
     boolean isDeleted = employeeService.deleteEmployeeById(employeeId);
